@@ -226,8 +226,8 @@ tag :table
 
 metadata:
 
-* color  `[r g b]` (int values)   
-* header-color `[r g b]` (int values)
+* color  <r g b> (int values)   
+* header-color <r g b> (int values)
 * spacing number
 * padding number
 * header text
@@ -247,7 +247,7 @@ tag :cell
 
 metadata:
 
-* color `[r g b]` (int values)   
+* color <r g b> (int values)   
 
 content:
 
