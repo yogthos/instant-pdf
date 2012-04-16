@@ -5,7 +5,7 @@
                  [hiccup "1.0.0-RC2"]
                  [org.clojure/data.json "0.1.1"]
                  [markdown-clj "0.5"]
-                 [clj-pdf "0.1.0-SNAPSHOT"]
+                 [clj-pdf "0.2.0-SNAPSHOT"]
                  [ring/ring-servlet "1.1.0-RC1"]
        		 [com.lowagie/itext "2.1.7"]]
           		 

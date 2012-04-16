@@ -36,11 +36,7 @@
 (defn generate-pdf [params]
   (try 
     
-    (let [[meta & contents] (read-json (get params "json-input")) 
-          doc (cons meta (clojure.walk/prewalk 
-                           #(if (and (vector? %) (string? (first %))) 
-                              (into [(keyword (first %))] (rest %)) %)
-                           contents))]
+    (let [[meta & doc] (read-json (get params "json-input"))]
       
       (with-open [out (new java.io.ByteArrayOutputStream)]
         (pdf/write-doc doc out)
