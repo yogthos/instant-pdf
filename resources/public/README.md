@@ -217,7 +217,9 @@ content:
 
 
 ```
-    ["list", {"roman":true}, ["chunk", {"style":"bold"}, "a bold item"], "another item", "yet another item"]
+  ["list", {"roman":true}, ["chunk", {"style":"bold"}, "a bold item"], 
+                           "another item", 
+                           "yet another item"]
 ```
 
 #### Table
@@ -226,8 +228,8 @@ tag :table
 
 metadata:
 
-* color  <r g b> (int values)   
-* header-color <r g b> (int values)
+* color  [r g b] int values
+* header-color [r g b] int values
 * spacing number
 * padding number
 * header text
@@ -247,7 +249,7 @@ tag :cell
 
 metadata:
 
-* color <r g b> (int values)   
+* color [r g b] int values
 
 content:
 
