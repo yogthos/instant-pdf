@@ -40,8 +40,8 @@
       
       (with-open [out (new java.io.ByteArrayOutputStream)]
         (pdf/write-doc
-          (if (map? (first doc))  
-            (cons (into {} (map (fn [[k v]] [(keyword k) v]) (first doc))) (rest doc))
+          (clojure.walk/prewalk
+            #(if (map? %) (into {} (map (fn [[k v]] [(keyword k) v]) %)) %)
             doc) 
           out)
                   
