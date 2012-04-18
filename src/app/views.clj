@@ -36,10 +36,15 @@
 (defn generate-pdf [params]
   (try 
     
-    (let [[meta & doc] (read-json (get params "json-input"))]
+    (let [doc (read-json (get params "json-input"))]
       
       (with-open [out (new java.io.ByteArrayOutputStream)]
-        (pdf/write-doc doc out)
+        (pdf/write-doc
+          (if (map? (first doc))  
+            (cons (into {} (map (fn [[k v]] [(keyword k) v]) (first doc))) (rest doc))
+            doc) 
+          out)
+                  
         (with-open [in (new java.io.ByteArrayInputStream (.toByteArray out))]                
           (.flush out)
           
