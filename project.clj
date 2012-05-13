@@ -1,4 +1,4 @@
-(defproject instant-pdf "0.1.0"
+(defproject instant-pdf "0.2.0"
   :description "JSON to PDF service"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [compojure "1.0.4"]
