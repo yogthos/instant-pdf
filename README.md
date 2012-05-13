@@ -165,6 +165,7 @@ optional metadata:
 ["chunk", {"super":true}, "5"]
 
 ["chunk", {"sub":true}, "2"]
+
 ```
 
 #### Heading
@@ -371,7 +372,7 @@ metadata:
 
 * align table alignment on the page can be: "left" "right" "center"
 * color  `[r g b]` (int values)   
-* header [{:color [r g b]} "column name" ...] if only a single column name is provided it will span all rows
+* header [{"color":[r g b]} "column name" ...] if only a single column name is provided it will span all rows
 * spacing number
 * padding number
 * border boolean
