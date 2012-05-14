@@ -1,17 +1,21 @@
 (ns app.views
   (:use [hiccup core page form] clojure.data.json markdown)
   (:require [clj-pdf.core :as pdf]
-            [ring.util.response :as response])
+            [ring.util.response :as response]
+            [clojure.java.io :as io])
   (:import [java.io File StringWriter]))
+
 
 (defn- get-resource-stream [context resource]
   (clojure.java.io/reader 
-    (.getResourceAsStream context     
+   (if-not (nil? context)
+     (.getResourceAsStream context     
       (str File/separator 
            "WEB-INF" File/separator 
            "classes" File/separator  
            "public" File/separator 
-           resource))))
+           resource))
+     (io/resource (str "public/" resource)))))
 
 (defn- read-help [context]  
   (with-open [in (get-resource-stream context "README.md")] 
