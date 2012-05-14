@@ -7,6 +7,7 @@
                  [markdown-clj "0.7"]
                  [clj-pdf "0.7.5"]
                  [ring/ring-servlet "1.1.0"]
-       		 [com.lowagie/itext "2.1.7"]]
+       		 [com.lowagie/itext "2.1.7"]
+                 [ring/ring-jetty-adapter "1.1.0"]]
   :dev-dependencies [[lein-ring "0.7.0"]]          		 
   :ring {:handler app.routes/app})
