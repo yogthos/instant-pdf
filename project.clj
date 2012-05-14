@@ -4,7 +4,7 @@
                  [compojure "1.0.4"]
                  [hiccup "1.0.0"]
                  [org.clojure/data.json "0.1.1"]
-                 [markdown-clj "0.7"]
+                 [markdown-clj "0.8"]
                  [clj-pdf "0.7.5"]
                  [ring/ring-servlet "1.1.0"]
        		 [com.lowagie/itext "2.1.7"]
