@@ -8,7 +8,7 @@
 
 (defn- get-resource-stream [context resource]
   (clojure.java.io/reader 
-   (if-not (nil? context)
+   (if context
      (.getResourceAsStream context     
       (str File/separator 
            "WEB-INF" File/separator 
