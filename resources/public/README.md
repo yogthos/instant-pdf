@@ -189,7 +189,7 @@ optional metadata:
 
 tag image
 
-image can be provided in form of a URL
+image can be provided in form of a URL or a base64 encoded string, base64 must be specified in the later case
  
 optional metadata:
 
@@ -201,6 +201,7 @@ optional metadata:
 * annotation ["title" "text"]
 * pad-left number
 * pad-right number
+* base64 boolean - if set the image is expected to be a Base64 string 
 
 ```
 ["image",

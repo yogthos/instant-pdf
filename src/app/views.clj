@@ -45,10 +45,16 @@
       (with-open [out (new java.io.ByteArrayOutputStream)]
         (pdf/write-doc
           (clojure.walk/prewalk
-            #(cond (map? %) (into {} (map (fn [[k v]] [(keyword k) v]) %))
-                   (and (vector? %) (= "image" (first %))) 
-                   (concat (butlast %) [(new java.net.URL (last %))])
-                   :else %)
+            #(cond 
+               (map? %) 
+               (into {} (map (fn [[k v]] [(keyword k) v]) %))
+               
+               (and (vector? %) (= "image" (first %)))
+               (do                 
+                 (if (and (map? (second %)) (:base64 (second %)))
+                 % (concat (butlast %) [(new java.net.URL (last %))])))
+               
+               :else %)
             doc) 
           out)
                   
