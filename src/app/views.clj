@@ -43,20 +43,7 @@
     (let [doc (read-json (get params "json-input"))]
       
       (with-open [out (new java.io.ByteArrayOutputStream)]
-        (pdf/write-doc
-          (clojure.walk/prewalk
-            #(cond 
-               (map? %) 
-               (into {} (map (fn [[k v]] [(keyword k) v]) %))
-               
-               (and (vector? %) (= "image" (first %)))
-               (do                 
-                 (if (and (map? (second %)) (:base64 (second %)))
-                 % (concat (butlast %) [(new java.net.URL (last %))])))
-               
-               :else %)
-            doc) 
-          out)
+        (pdf/write-doc doc out)
                   
         (with-open [in (new java.io.ByteArrayInputStream (.toByteArray out))]                
           (.flush out)
