@@ -626,7 +626,7 @@ if "time-series": is set to true then items on x axis must be dates, the default
 ```
 
 ### Complete example
-```
+```javascript
 [{"subject":"Some subject",
   "creator":"Jane Doe",
   "doc-header":["inspired by", "William Shakespeare"],
