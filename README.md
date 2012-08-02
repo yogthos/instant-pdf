@@ -13,7 +13,7 @@ lein uberjar
 java -jar instant-pdf-0.2.0-standalone.jar <optional port>
 ```
 
-To build a deployable war:
+To package as a WAR for app server deployment:
 ```bash
 lein ring uberwar
 ```
