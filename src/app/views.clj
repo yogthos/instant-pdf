@@ -32,7 +32,7 @@
      (form-to [:post "/"] 
               [:p "Enter JSON"]
               (text-area 
-                {:rows "40"} 
+                {:rows "30"} 
                 "json-input" "[{\"title\":\"My document\"}, \"some content here...\"]")
               [:br]
               (submit-button "Generate PDF"))
