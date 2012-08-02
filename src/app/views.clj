@@ -3,8 +3,8 @@
   (:require [clj-pdf.core :as pdf]
             [ring.util.response :as response]
             [clojure.java.io :as io])
-  (:import [java.io File StringWriter]))
-
+  (:import [java.io File StringWriter]
+           org.apache.commons.io.IOUtils))
 
 (defn- get-resource-stream [context resource]
   (clojure.java.io/reader 
@@ -31,7 +31,10 @@
     [:body
      (form-to [:post "/"] 
               [:p "Enter JSON"]
-              (text-area {:rows "40"} "json-input" "")
+              (text-area 
+                {:rows "40" 
+                 :placeholder "[{\"title\":\"My document\"}, \"some content here...\"]"} 
+                "json-input" "")
               [:br]
               (submit-button "Generate PDF"))
      [:br]     
@@ -57,7 +60,7 @@
         (.printStackTrace ex)
         {:status 500
          :headers {"Content-Type" "text/html"}
-         :body (str "Error occured while parsing the document: " (.getMessage ex))}))))		
+         :body (html5 [:body [:h2 "An error has occured while parsing the document"] (.getMessage ex)])}))))		
 
 
 
