@@ -1,3 +1,7 @@
+## About
+
+The service accepts POST requests with JSON body and returns a PDF document, the actual PDF generation is done by the [clj-pdf](https://github.com/yogthos/clj-pdf) library.
+
 ## Document Format
 
 ### Metadata
