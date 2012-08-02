@@ -1,10 +1,8 @@
 (ns app.server
   (:require [app.routes :as routes]
-            [ring.adapter.jetty :as ring]))
+            [ring.adapter.jetty :as ring])
+  (:gen-class))
 
-(defn start [port]
-  (ring/run-jetty #'routes/app {:port (or port 8080) :join? false}))
-
-(defn -main []
-  (let [port (Integer. (System/getenv "PORT"))]
-    (start port)))
+(defn -main [& [port]]  
+  (ring/run-jetty #'routes/app {:port (if port (Integer/parseInt port) 8080) 
+                                :join? false}))

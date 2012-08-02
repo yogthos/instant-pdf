@@ -2,6 +2,22 @@
 
 The service accepts POST requests with JSON body and returns a PDF document, the actual document generation is done by the [clj-pdf](https://github.com/yogthos/clj-pdf) library.
 
+## Usage
+
+You will need [Leiningen](https://github.com/technomancy/leiningen/) to build the service.
+
+To run standalone:
+
+```bash
+lein uberjar
+java -jar instant-pdf-0.2.0-standalone.jar <optional port>
+```
+
+To build a deployable war
+```bash
+lein ring uberwar
+```
+
 ## Document Format
 
 ### Metadata

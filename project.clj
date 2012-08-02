@@ -10,4 +10,5 @@
        		 [com.lowagie/itext "2.1.7"]
                  [ring/ring-jetty-adapter "1.1.0"]]
   :dev-dependencies [[lein-ring "0.7.0"]]          		 
-  :ring {:handler app.routes/app})
+  :ring {:handler app.routes/app}
+  :main app.server)
