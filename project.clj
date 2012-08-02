@@ -1,7 +1,7 @@
 (defproject instant-pdf "0.2.0"
   :description "JSON to PDF service"
   :dependencies [[org.clojure/clojure "1.4.0"]
-                 [compojure "1.0.4"]
+                 [compojure "1.1.1"]
                  [hiccup "1.0.0"]
                  [org.clojure/data.json "0.1.2"]
                  [markdown-clj "0.9.3"]
