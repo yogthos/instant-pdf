@@ -1,6 +1,7 @@
 ## About
 
 The service accepts POST requests with JSON body and returns a PDF document, the actual document generation is done by the [clj-pdf](https://github.com/yogthos/clj-pdf) library. The service can be seen in action [here](http://yogthos.net/instant-pdf).
+
 ## Usage
 
 You will need [Leiningen](https://github.com/technomancy/leiningen/) to build the service.
@@ -15,6 +16,20 @@ java -jar instant-pdf-0.2.0-standalone.jar <optional port>
 To package as a WAR for app server deployment:
 ```bash
 lein ring uberwar
+```
+
+Once the service is running you will be able to make a POST request to it and pass in the 
+JSON document as the request. The document must be an array containing a map representing the
+metadata as the first element, followed by one or more elements, eg:
+```javascript
+[{}, "my document"]
+
+[{"title":"My title", "size":"a4"}, ["paragraph", "some text"]]
+```
+
+Example POST with cURL:
+```bash
+curl -i -X POST -d 'json-input=[{}, ["paragraph", "some text"]]' http://yogthos.net/instant-pdf > doc.pdf
 ```
 
 ## Document Format
