@@ -1,6 +1,6 @@
 This service accepts POST requests with JSON markup at http://yogthos.net/instant-pdf/ and returns PDF documents:
 ```
-curl -i -X POST -d 'json-input=[{}, ["paragraph", "some text"]]' http://yogthos.net/instant-pdf > doc.pdf
+curl -i -X POST -d 'json-input=[{}, "some text"]' http://yogthos.net/instant-pdf > doc.pdf
 ```
 [see here for source code and syntax](https://github.com/yogthos/instant-pdf)
 
