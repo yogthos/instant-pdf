@@ -29,7 +29,7 @@ metadata as the first element, followed by one or more elements, eg:
 
 Example POST with cURL:
 ```bash
-curl -i -X POST -d 'json-input=[{}, ["paragraph", "some text"]]' http://yogthos.net/instant-pdf > doc.pdf
+curl -i -X POST -d 'json-input=[{}, ["paragraph", "some text"]]' http://localhost:8080/instant-pdf > doc.pdf
 ```
 
 ## Document Format
