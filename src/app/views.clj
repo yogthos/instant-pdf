@@ -1,5 +1,5 @@
 (ns app.views
-  (:use [hiccup core page form] clojure.data.json markdown)
+  (:use [hiccup core page form] cheshire.core markdown)
   (:require [clj-pdf.core :as pdf]
             [ring.util.response :as response]
             [clojure.java.io :as io])
@@ -42,7 +42,7 @@
 (defn generate-pdf [params]
   (try 
     
-    (let [doc (read-json (get params "json-input"))]
+    (let [doc (parse-string (get params "json-input") true)]
       
       (with-open [out (new java.io.ByteArrayOutputStream)]
         (pdf/write-doc doc out)
