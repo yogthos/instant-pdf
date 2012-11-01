@@ -1,5 +1,7 @@
 ## About
 
+<img src="https://raw.github.com/yogthos/instant-pdf/master/logo.png"
+title="Instant PDF" align="left" padding="5px" width="200" height="100"/>
 The service accepts POST requests with JSON body and returns a PDF document, the actual document generation is done by the [clj-pdf](https://github.com/yogthos/clj-pdf) library. The service can be seen in action [here](http://yogthos.net/instant-pdf).
 
 ## Usage
