@@ -346,6 +346,17 @@ content:
 
 ```
 
+#### Pagebreak
+
+tag "pagebreak"
+
+Creates a new page in the document, subsequent content will start on that page. 
+Only creates a new page if the current page is not blank; otherwise, it's ignored.
+
+```javascript
+["pagebreak"]
+```
+
 #### Paragraph
 
 tag "paragraph":
