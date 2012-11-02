@@ -151,6 +151,8 @@ tag "anchor":
 
 optional metadata: 
 
+* "id": name of the anchor
+* "target": an external link or a name of the anchor this anchor points to, if referencing another anchor then prefix target with #
 * "style": font
 * "leading": number
 
@@ -164,7 +166,11 @@ iText idiosynchorsies:
 * if no font style or leading is specified then content can be a chunk, a phrase, or a string
 
 ```javascript
-["anchor", {"style":{"size":15}, "leading":20}, "some anchor"]
+["anchor", {"style":{"size":15}, "leading":20, "target":"http://google.com"}, "google"]
+
+["anchor", {"id":"targetAnchor"}, "some anchor"]
+
+["anchor", {"target":"#targetAnchor"}, "this anchor points to some anchor"]
 
 ["anchor", ["phrase", {"style":"bold"}, "some anchor phrase"]]
 
