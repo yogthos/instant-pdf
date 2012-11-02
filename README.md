@@ -36,6 +36,27 @@ Example POST with cURL:
 curl -i -X POST -d 'json-input=[{}, ["paragraph", "some text"]]' http://localhost:8080/instant-pdf > doc.pdf
 ```
 
+## Document Elements
+
+[Anchor](#anchor),
+[Chapter](#chapter),
+[Chart](#charting),
+[Chunk](#chunk),
+[Heading](#heading),
+[Image](#image),
+[Line](#line),
+[List](#list),
+[Pagebreak](#pagebreak),
+[Paragraph](#paragraph),
+[Phrase](#phrase),
+[Section](#section),
+[Spacer](#spacer),
+[String](#string),
+[Subscript](#subscript),
+[Superscript](#superscript),
+[Table](#table),
+[Table Cell](#table-cell)
+
 ## Document Format
 
 ### Metadata
