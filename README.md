@@ -249,18 +249,15 @@ tag "heading":
 
 optional metadata:
 
-* "family": 
-* "size": 
-* "style": 
-* "color": 
+* "style": custom font for the heading
 * "align": specifies alignement of heading possible valuse "left":, "center":, "right":
 
 ```javascript
 ["heading", "Lorem Ipsum"]
 
-["heading", {"size":15}, "Lorem Ipsum"]
+["heading", {"style": {"size":15}}, "Lorem Ipsum"]
 
-["heading", {"size":10, "color":[100, 40, 150], "align":"right"}, "Foo"]
+["heading", {"style": {"size":10, "color":[100, 40, 150], "align":"right"}}, "Foo"]
 
 ```
 
