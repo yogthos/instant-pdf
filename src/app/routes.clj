@@ -12,6 +12,10 @@
   (route/resources "/")
   (route/not-found "Page not found"))
 
+(defn init [])
+
+(defn destroy [])
+
 (def app
   (-> (handler/site main-routes)
     (wrap-base-url)

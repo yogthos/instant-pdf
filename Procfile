@@ -1,1 +1,1 @@
-web: lein trampoline run -m app.server 
+web: lein with-profile production ring server

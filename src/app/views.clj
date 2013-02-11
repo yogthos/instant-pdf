@@ -1,5 +1,5 @@
 (ns app.views
-  (:use [hiccup core page form] cheshire.core markdown)
+  (:use [hiccup core page form] cheshire.core markdown.core)
   (:require [clj-pdf.core :as pdf]
             [ring.util.response :as response]
             [clojure.java.io :as io])
