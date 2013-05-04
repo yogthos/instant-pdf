@@ -63,3 +63,18 @@
 
 
 
+(def recset [["baz" "quux"]["wib" "wob"]])
+
+(def f ['$foo '$bar])
+(def q (pdf/template f))
+
+(defmacro template* [f]
+  `(vec ~f))
+
+(macroexpand '(template* f))
+
+(template* f)
+
+(macroexpand '((pdf/template (template* f)) recset))
+
+((pdf/template ~f) recset)
