@@ -6,75 +6,45 @@
   (:import [java.io File StringWriter]
            org.apache.commons.io.IOUtils))
 
-(defn- get-resource-stream [context resource]
-  (clojure.java.io/reader 
-   (if context
-     (.getResourceAsStream context     
-      (str File/separator 
-           "WEB-INF" File/separator 
-           "classes" File/separator  
-           "public" File/separator 
-           resource))
-     (io/resource (str "public/" resource)))))
 
-(defn- read-help [context]  
-  (with-open [in (get-resource-stream context "README.md")] 
-    (let [out (new StringWriter)]
-      (md-to-html in out)
-      (.toString out))))
+(defn- read-help []
+  (with-open [in  (-> "public/README.md" io/resource io/input-stream)
+              out (new StringWriter)]
+    (md-to-html in out)
+    (.toString out)))
 
-(defn index-page [params]
+(defn index-page [req]
   (html5
     [:head [:title "Instant PDF"]
-     (include-css "http://kevinburke.bitbucket.org/markdowncss/markdown.css"
-                  "/css/style.css")]
+     (include-css "/css/style.css")]
     [:body
-     (form-to [:post "/"] 
-              [:p "Enter JSON"]
-              (text-area 
-                {:rows "30"} 
+     (form-to [:post "/"]
+              [:h1 "Enter JSON"]
+              (text-area {:rows "30"}
                 "json-input" "[{\"title\":\"My document\"}, \"some content here...\"]")
               [:br]
-              (submit-button "Generate PDF"))
-     [:br]     
-     (read-help (:servlet-context params))]))
+              (submit-button {:class "button"} "Generate PDF"))
+     [:br]
+     (read-help)]))
 
-(defn generate-pdf [params]
-  (try 
-    
-    (let [doc (parse-string (get params "json-input") true)]
-      
+(defn generate-pdf [json-input]
+  (try
+
+    (let [doc (parse-string json-input true)]
+
       (with-open [out (new java.io.ByteArrayOutputStream)]
         (pdf/write-doc doc out)
-                  
-        (with-open [in (new java.io.ByteArrayInputStream (.toByteArray out))]                
+
+        (with-open [in (new java.io.ByteArrayInputStream (.toByteArray out))]
           (.flush out)
-          
+
           (-> (response/response in)
             (response/header "Content-Disposition" "filename=document.pdf")
             (response/content-type "application/pdf")
             (response/header "Content-Length" (.size out))) )))
-    (catch Exception ex 
+    (catch Exception ex
       (do
         (.printStackTrace ex)
         {:status 500
          :headers {"Content-Type" "text/html"}
-         :body (html5 [:body [:h2 "An error has occured while parsing the document"] (.getMessage ex)])}))))		
-
-
-
-(def recset [["baz" "quux"]["wib" "wob"]])
-
-(def f ['$foo '$bar])
-(def q (pdf/template f))
-
-(defmacro template* [f]
-  `(vec ~f))
-
-(macroexpand '(template* f))
-
-(template* f)
-
-(macroexpand '((pdf/template (template* f)) recset))
-
-((pdf/template ~f) recset)
+         :body (html5 [:body [:h2 "An error has occured while parsing the document"] (.getMessage ex)])}))))
