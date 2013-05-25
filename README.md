@@ -8,13 +8,13 @@ The service accepts POST requests with JSON body and returns PDF documents, the 
 
 ## Usage
 
-You will need [Leiningen](https://github.com/technomancy/leiningen/) to build the service.
+You will need [Leiningen](http://leiningen.org/) to build the service.
 
 To run standalone:
 
 ```bash
-lein uberjar
-java -jar instant-pdf-0.2.0-standalone.jar <optional port>
+lein ring uberjar
+java -jar target/instant-pdf-0.2.2-standalone.jar <optional port>
 ```
 
 To package as a WAR for app server deployment:
@@ -22,7 +22,7 @@ To package as a WAR for app server deployment:
 lein ring uberwar
 ```
 
-Once the service is running you will be able to make a POST request to it and pass in the 
+Once the service is running you will be able to make a POST request to it and pass in the
 JSON document as the request. The document must be an array containing a map representing the
 metadata as the first element, followed by one or more elements, eg:
 ```javascript
@@ -138,7 +138,7 @@ available page sizes:
 "small-paperback"
 "tabloid"
  ```
-    
+
 defaults to A4 page size if none provided
 
 orientation defaults to portrait, unless "landscape" is specified
@@ -169,7 +169,7 @@ Each document section is represented by a vector starting with a keyword identif
 
 tag "anchor":
 
-optional metadata: 
+optional metadata:
 
 * "id": name of the anchor
 * "target": an external link or a name of the anchor this anchor points to, if referencing another anchor then prefix target with #
@@ -177,11 +177,11 @@ optional metadata:
 * "leading": number
 
 content:
-    
+
 iText idiosynchorsies:
 
 * when both font style and leading number are specified the content must be a string
-* when leading number is specified content can be a chunk or a string 
+* when leading number is specified content can be a chunk or a string
 * when only font style is specified content must be a string
 * if no font style or leading is specified then content can be a chunk, a phrase, or a string
 
@@ -218,21 +218,21 @@ content:
 
 ```
 
-#### Chunk 
+#### Chunk
 
 tag "chunk":
 
-optional metadata: 
+optional metadata:
 
 * "sub": boolean sets chunk to subscript
 * "super": boolean sets chunk to superscript
 
 font metadata (refer to Font section for details)
 
-* "family": 
-* "size": 
-* "style": 
-* "color": 
+* "family":
+* "size":
+* "style":
+* "color":
 
 ```javascript
 ["chunk", {"style":"bold"}, "small chunk of text"]
@@ -265,9 +265,9 @@ optional metadata:
 
 tag "image":
 
-image data can be a base64 string, a string representing URL or a path to file, 
+image data can be a base64 string, a string representing URL or a path to file,
 images larger than the page margins will automatically be scaled to fit.
- 
+
 optional metadata:
 
 * "xscale": number - percentage relative to page size
@@ -301,7 +301,7 @@ tag "line":
 
 optional metadata:
 
-* "dotted": boolean 
+* "dotted": boolean
 * "gap": number ;space between dots if line is dotted
 
 creates a horizontal line
@@ -346,7 +346,7 @@ content:
 
 tag "paragraph":
 
-optional metadata: 
+optional metadata:
 
 * "indent": number
 * "keep-together": boolean
@@ -355,10 +355,10 @@ optional metadata:
 
 font metadata (refer to Font section for details)
 
-* "family": 
-* "size": 
-* "style": 
-* "color": 
+* "family":
+* "size":
+* "style":
+* "color":
 
 content:
 
@@ -391,16 +391,16 @@ content:
 
 tag "phrase":
 
-optional metadata: 
+optional metadata:
 
 * "leading": number
 
 font metadata (refer to Font section for details)
 
-* "family": 
-* "size": 
-* "style": 
-* "color": 
+* "family":
+* "size":
+* "style":
+* "color":
 
 content:
 
@@ -453,7 +453,7 @@ creates a number of new lines equal to the number passed in (1 space is default)
 
 ["spacer", 5]
 
-``` 
+```
 
 #### String
 
@@ -470,7 +470,7 @@ tag "subscript":
 optional metadata:
 
 * "style": font
- 
+
 creates a text chunk in subscript
 
 ```javascript
@@ -487,7 +487,7 @@ tag "superscript":
 optional metadata:
 
 * "style": font
- 
+
 creates a text chunk in subscript
 
 ```javascript
@@ -504,7 +504,7 @@ tag "table":
 metadata:
 
 * "align": table alignment on the page can be: "left":, "center":, "right":
-* "color":  `[r g b]` (int values)   
+* "color":  `[r g b]` (int values)
 * "header": [{"color": [r g b]} "column name" ...] if only a single column name is provided it will span all rows
 * "spacing": number
 * "padding": number
@@ -564,7 +564,7 @@ tag "cell":
 
 metadata:
 
-* "color": `[r g b]` (int values)   
+* "color": `[r g b]` (int values)
 * "colspan": number
 * "rowspan": number
 * "border": boolean
@@ -613,7 +613,7 @@ metadata:
 * "time-series": - only used in line chart
 * "time-format": - can optionally be used with time-series to provide custom date formatting, defaults to "yyyy-MM-dd-HH"mm:ss"":
 * "horizontal":  - can be used with bar charts and line charts, not supported by time series
-* "title":  
+* "title":
 
 additional image metadata
 
@@ -663,7 +663,7 @@ if "time-series": is set to true then items on x axis must be dates, the default
   ["2011-02-11-22:25:01", 400], ["2011-04-02-09:35:10", 350],
   ["2011-07-06-12:20:07", 600]]]
 
-``` 
+```
 
 ```javascript
 ["chart",
