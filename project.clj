@@ -1,14 +1,14 @@
-(defproject instant-pdf "0.2.2"
+(defproject instant-pdf "0.2.3"
   :description "JSON to PDF service"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [compojure "1.1.5"]
-                 [hiccup "1.0.3"]
+                 [hiccup "1.0.4"]
                  [cheshire "5.2.0"]
-                 [markdown-clj "0.9.25"]
-                 [clj-pdf "1.10.0"]
-                 [ring-server "0.2.8"]]
+                 [markdown-clj "0.9.33"]
+                 [clj-pdf "1.11.4"]
+                 [ring-server "0.3.0"]]
   :min-lein-version "2.0.0"
-  :plugins [[lein-ring "0.8.5"]]
+  :plugins [[lein-ring "0.8.7"]]
   :ring {:handler app.routes/app}
   :profiles {:production
              {:ring
