@@ -41,7 +41,6 @@
      (into content)))
 
 (defn md-to-pdf [md out]
-  (println md)
  (pdf
    (->> (md-to-html-string md)
         (parse-html)
