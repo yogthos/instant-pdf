@@ -18,7 +18,7 @@ To run standalone:
 
 ```bash
 lein ring uberjar
-java -jar target/instant-pdf-0.2.2-standalone.jar <optional port>
+java -jar target/instant-pdf-0.2.3-standalone.jar <optional port>
 ```
 
 To package as a WAR for app server deployment:
@@ -26,9 +26,209 @@ To package as a WAR for app server deployment:
 lein ring uberwar
 ```
 
-Once the service is running you will be able to make a POST request to it and pass in the
-JSON document as the request. The document must be an array containing a map representing the
+Once the service is running you will be able to make a POST request to it and pass in a
+JSON or a Markdown document as the request. The JSON documents must be submitted using the form parameter called `json-input`,
+while Markdown documents are submitted using the `md-input` parameter.
+
+## Markdown Syntax
+
+Example POST with cURL:
+```bash
+curl -i -X POST -d 'md-input=# Hello World' http://localhost:3000/ > doc.pdf
+```
+
+Control characters can be escaped using \
+```
+\*
+\`
+\_
+\(
+\)
+\[
+\]
+\{
+\}
+```
+
+### Heading
+
+the number of hashes indicates the level of the heading
+
+```
+# Heading
+
+##Sub-heading
+
+### Sub-sub-heading
+```
+
+headings can also be defined using `=` and `-` for `h1` and `h2` respectively
+
+```
+Heading 1
+=========
+
+Heading 2
+---------
+```
+
+### Line
+
+```
+***
+
+* * *
+
+*****
+
+- - -
+
+______
+```
+
+### Linebreak
+
+If a line ends with two or more spaces a `<br />` tag will be inserted at the end.
+
+### Emphasis
+
+```
+*foo*
+```
+
+### Italics
+
+```
+_foo_
+```
+
+### Strong
+
+```
+**foo**
+```
+
+### Bold
+
+```
+__foo__
+```
+
+### Blockquote
+```
+>This is a blockquote
+with some content
+
+>this is another blockquote
+```
+
+### Paragraph
+
+```
+This is a paragraph, it's
+split into separate lines.
+
+This is another paragraph.
+
+```
+
+### Unordered List
+
+indenting an item makes it into a sublist of the item above it, ordered and unordered lists can be nested within one another.
+List items can be split over multiple lines.
+
+```
+* Foo
+* Bar
+ * Baz
+```
+
+```
+* foo
+* bar
+
+   * baz
+     1. foo
+     2. bar
+        more content
+        ## subheading
+        ***
+        **strong text** in the list
+
+   * fuzz
+
+      * blah
+      * blue
+* brass
+```
+
+### Ordered List
+
+```
+1. Foo
+2. Bar
+3. Baz
+```
+
+### Inline Code
+
+Any special characters in code will be escaped with their corresponding HTML codes.
+
+```
+Here's some code `x + y = z` that's inlined.
+```
+
+### Code block
+
+Using three backquotes indicates a start of a code block, the next three backquotes ends the code block section.
+Optionally, the language name can be put after the backquotes to produce a tag compatible with the [Syntax Highlighter](http://alexgorbatchev.com/SyntaxHighlighter/), eg:
+
+&#96;&#96;&#96;clojure
+
+(defn foo [bar] "baz")
+
+&#96;&#96;&#96;
+
+
+### Indented Code
+
+indenting by at least 4 spaces creates a code block
+
+    some
+    code
+    here
+
+note: XML is escaped in code sections
+
+### Strikethrough
+
+```
+~~foo~~
+```
+
+### Superscript
+
+```
+a^2 + b^2 = c^2
+```
+
+### Link
+```
+[github](http://github.com)
+```
+
+### Image
+```
+![Alt text](http://server/path/to/img.jpg)
+![Alt text](/path/to/img.jpg "Optional Title")
+```
+
+
+## JSON Syntax
+
+The document must be an array containing a map representing the
 metadata as the first element, followed by one or more elements, eg:
+
 ```javascript
 [{}, "my document"]
 
@@ -37,7 +237,7 @@ metadata as the first element, followed by one or more elements, eg:
 
 Example POST with cURL:
 ```bash
-curl -i -X POST -d 'json-input=[{}, ["paragraph", "some text"]]' http://localhost:8080/instant-pdf > doc.pdf
+curl -i -X POST -d 'json-input=[{}, ["paragraph", "some text"]]' http://localhost:3000/ > doc.pdf
 ```
 
 ## Document Elements
