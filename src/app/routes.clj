@@ -8,7 +8,11 @@
 
 (defroutes main-routes
   (GET "/" req index-page)
-  (POST "/" [json-input] (generate-pdf json-input))
+  (POST "/" [json-input md-input]
+        (cond
+          json-input (json-to-pdf json-input)
+          md-input   (md-to-pdf md-input)
+          :else      {:status 400 :body "invalid request"}))
   (route/resources "/")
   (route/not-found "Page not found"))
 
