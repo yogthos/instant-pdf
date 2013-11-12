@@ -7,7 +7,8 @@
             [compojure.response :as response]))
 
 (defroutes main-routes
-  (GET "/" req index-page)
+  (GET "/" req (index-page req true))
+  (GET "/md" req (index-page req false))
   (POST "/" [json-input md-input]
         (cond
           json-input (json-to-pdf json-input)

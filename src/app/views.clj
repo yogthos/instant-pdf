@@ -14,15 +14,15 @@
     (md-to-html in out)
     (.toString out)))
 
-(defn index-page [req]
+(defn index-page [req json?]
   (html5
     [:head [:title "Instant PDF"]
      (include-css "/css/style.css")]
     [:body
      (form-to [:post "/"]
-              [:h1 "Enter JSON"]
+              [:h1 (if json? "Enter JSON" "Enter Markdown")]
               (text-area {:rows "30"}
-                "json-input" "[{\"title\":\"My document\"}, \"some content here...\"]")
+                (if json? "json-input" "md-input") "[{\"title\":\"My document\"}, \"some content here...\"]")
               [:br]
               (submit-button {:class "button"} "Generate PDF"))
      [:br]
