@@ -8,6 +8,7 @@
                  [clj-pdf "1.11.6"]
                  [ring-server "0.3.0"]]
   :min-lein-version "2.0.0"
+  :aot :all
   :plugins [[lein-ring "0.8.7"]]
   :ring {:handler app.routes/app}
   :profiles {:production
