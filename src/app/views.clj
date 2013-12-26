@@ -51,4 +51,4 @@
   (generate-pdf (partial md/md-to-pdf md-input)))
 
 (defn json-to-pdf [json-input]
-  (generate-pdf (partial pdf/write-doc (parse-string json-input true))))
+  (generate-pdf (partial pdf/pdf (parse-string json-input true))))
