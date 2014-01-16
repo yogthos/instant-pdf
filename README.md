@@ -180,10 +180,9 @@ Here's some code `x + y = z` that's inlined.
 
 ### Code block
 
-Using three backquotes indicates a start of a code block, the next three backquotes ends the code block section.
-Optionally, the language name can be put after the backquotes to produce a tag compatible with the [Syntax Highlighter](http://alexgorbatchev.com/SyntaxHighlighter/), eg:
+Using three backquotes indicates a start of a code block.
 
-&#96;&#96;&#96;clojure
+&#96;&#96;&#96;
 
 (defn foo [bar] "baz")
 
