@@ -2,7 +2,7 @@
   :description "JSON to PDF service"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [compojure "1.1.6"]
-                 [hiccup "1.0.4"]
+                 [hiccup "1.0.5"]
                  [cheshire "5.3.1"]
                  [markdown-clj "0.9.41"]
                  [clj-pdf "1.11.15"]
