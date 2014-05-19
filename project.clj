@@ -1,10 +1,10 @@
 (defproject instant-pdf "0.2.3"
   :description "JSON to PDF service"
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [compojure "1.1.6"]
+                 [compojure "1.1.8"]
                  [hiccup "1.0.5"]
                  [cheshire "5.3.1"]
-                 [markdown-clj "0.9.43"]
+                 [markdown-clj "0.9.44"]
                  [clj-pdf "1.11.17"]
                  [ring-server "0.3.1"]]
   :min-lein-version "2.0.0"
