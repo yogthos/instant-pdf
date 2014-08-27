@@ -24,10 +24,10 @@
               (if json?
                 (text-area
                  {:rows "30"}
-                 "md-input" "[{\"title\":\"My document\"}, \"some content here...\"]")
+                 "json-input" "[{\"title\":\"My document\"}, \"some content here...\"]")
                 (text-area
                  {:rows "30"}
-                 "json-input" "## My Exciting Document\n\nsome content here..."))
+                 "md-input" "## My Exciting Document\n\nsome content here..."))
               [:br]
               (submit-button {:class "button"} "Generate PDF"))
      [:br]
