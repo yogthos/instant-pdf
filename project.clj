@@ -5,7 +5,7 @@
                  [hiccup "1.0.5"]
                  [cheshire "5.3.1"]
                  [markdown-clj "0.9.47"]
-                 [clj-pdf "1.11.20"]
+                 [clj-pdf "1.11.21"]
                  [ring-server "0.3.1"]]
   :min-lein-version "2.0.0"
   :aot :all
