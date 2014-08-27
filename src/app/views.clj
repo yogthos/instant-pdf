@@ -21,8 +21,13 @@
     [:body
      (form-to [:post "/"]
               [:h1 (if json? "Enter JSON" "Enter Markdown")]
-              (text-area {:rows "30"}
-                (if json? "json-input" "md-input") "[{\"title\":\"My document\"}, \"some content here...\"]")
+              (if json?
+                (text-area
+                 {:rows "30"}
+                 "json-input" "## My Exciting Document\n\nsome content here...")
+                (text-area
+                 {:rows "30"}
+                 "md-input" "[{\"title\":\"My document\"}, \"some content here...\"]"))
               [:br]
               (submit-button {:class "button"} "Generate PDF"))
      [:br]
