@@ -2,7 +2,7 @@
 
 <img src="https://raw.github.com/yogthos/instant-pdf/master/logo.png"
 title="Instant PDF" align="left" padding="5px" width="100" height="50"/>
-The service accepts POST requests with JSON or Markdown body and returns PDF documents,
+The service accepts POST requests with JSON body and returns PDF documents,
 the document generation is done by the [clj-pdf](https://github.com/yogthos/clj-pdf) library.
 You can see it in action [here](http://instantpdf.herokuapp.com/).
 
