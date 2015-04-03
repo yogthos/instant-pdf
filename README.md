@@ -763,9 +763,9 @@ if "time-series": is set to true then items on x axis must be dates, the default
 ```
 
 ### License
+***
+Copyright © 2015 Dmitri Sotnikov
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
-***
-Copyright (C) 2012 Yogthos
 
