@@ -9,7 +9,7 @@
                  [ring-server "0.4.0"]]
   :min-lein-version "2.0.0"
   :aot :all
-  :plugins [[lein-ring "0.8.7"]]
+  :plugins [[lein-ring "0.9.6"]]
   :ring {:handler app.routes/app}
   :profiles {:production
              {:ring
