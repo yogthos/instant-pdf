@@ -10,8 +10,11 @@ You can see it in action [here](http://instantpdf.herokuapp.com/).
 
 ## Usage
 
-You will need [Leiningen](http://leiningen.org/) to build the service.
+You will need the following tools to build the service.
 
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Leiningen](http://leiningen.org/)
+* 
 To run standalone:
 
 ```bash
