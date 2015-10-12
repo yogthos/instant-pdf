@@ -9,8 +9,10 @@
                  [ring-server "0.4.0"]]
   :min-lein-version "2.0.0"
   :aot :all
+  :uberjar-name "instant-pdf.jar"
   :plugins [[lein-ring "0.9.7"]]
-  :ring {:handler app.routes/app}
+  :ring {:handler app.routes/app
+         :uberwar-name "instant-pdf.war"}
   :profiles {:production
              {:ring
               {:open-browser? false
