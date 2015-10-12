@@ -16,7 +16,7 @@ To run standalone:
 
 ```bash
 lein ring uberjar
-java -jar target/instant-pdf-0.2.3-standalone.jar <optional port>
+java -jar target/instant-pdf.jar <optional port>
 ```
 
 To package as a WAR for app server deployment:
