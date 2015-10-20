@@ -4,7 +4,7 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  [cheshire "5.5.0"]
-                 [markdown-clj "0.9.74"]
+                 [markdown-clj "0.9.76"]
                  [clj-pdf "2.1.6"]
                  [ring-server "0.4.0"]]
   :min-lein-version "2.0.0"
