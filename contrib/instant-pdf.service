@@ -1,0 +1,9 @@
+[Unit]
+Description=Instant-PDF API Daemon
+
+[Service]
+ExecStart=/usr/bin/java -jar /api/pdf/target/instant-pdf.jar
+User=daemon
+
+[Install]
+WantedBy=multi-user.target
