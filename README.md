@@ -19,7 +19,14 @@ To run standalone:
 
 ```bash
 lein ring uberjar
-java -jar target/instant-pdf.jar <optional port>
+java -jar target/instant-pdf.jar
+```
+
+The port can be specified as an environment variable, e.g:
+
+```
+export PORT=3001
+java -jar target/instant-pdf.jar
 ```
 
 To package as a WAR for app server deployment:
