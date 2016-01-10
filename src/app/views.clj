@@ -2,6 +2,7 @@
   (:use [hiccup core page form] cheshire.core markdown.core)
   (:require [clj-pdf.core :as pdf]
             [app.md :as md]
+            [clojure.walk :refer [prewalk]]
             [ring.util.response :as response]
             [clojure.java.io :as io])
   (:import [java.io File StringWriter]
@@ -56,4 +57,10 @@
   (generate-pdf (partial md/md-to-pdf md-input)))
 
 (defn json-to-pdf [json-input]
-  (generate-pdf (partial pdf/pdf (parse-string json-input true))))
+  (generate-pdf (partial pdf/pdf (prewalk
+                                  (fn [node]
+                                    (case node
+                                      ["pagebreak"] [:pagebreak]
+                                      ["clear-double-page"] [:clear-double-page]
+                                      node))
+                                  (parse-string json-input true)))))
